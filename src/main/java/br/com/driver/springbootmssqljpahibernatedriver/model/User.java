@@ -5,7 +5,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
+import java.util.List;
+import java.util.Set;
+
 import org.hibernate.validator.constraints.br.*;
 
 @Entity
@@ -26,6 +31,9 @@ public class User {
 	@Column(name = "idade", nullable = false)
 	private int idade;
 
+	@OneToMany(mappedBy="user")
+	private Set<Car> cars;
+	
 	public User() {
 
 	}
