@@ -1,7 +1,5 @@
 package br.com.driver.springbootmssqljpahibernatedriver.model;
 
-
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,21 +15,21 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	private String id;
-	
+
 	@Column(name = "nome", nullable = false)
 	private String nome;
-	
+
 	@CPF
 	@Column(name = "cpf", nullable = false)
 	private String cpf;
-	
+
 	@Column(name = "idade", nullable = false)
 	private int idade;
-	
+
 	public User() {
-		
+
 	}
-	
+
 	public User(String nome, String cpf, int idade) {
 		this.nome = nome;
 		this.cpf = cpf;
