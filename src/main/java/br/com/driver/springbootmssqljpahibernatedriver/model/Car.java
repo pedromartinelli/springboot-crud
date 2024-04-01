@@ -34,10 +34,11 @@ public class Car {
 
 	}
 
-	public Car(String marca, String modelo, String cor) {
+	public Car(String marca, String modelo, String cor, User user) {
 		this.marca = marca;
 		this.modelo = modelo;
 		this.cor = cor;
+		this.user = user;
 	}
 
 	public String getId() {
@@ -70,5 +71,13 @@ public class Car {
 
 	public void setCor(String cor) {
 		this.cor = cor;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 }
