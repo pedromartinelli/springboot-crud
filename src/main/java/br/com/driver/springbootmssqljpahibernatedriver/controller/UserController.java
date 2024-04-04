@@ -53,22 +53,22 @@ public class UserController {
 	}
 
 	@PutMapping("/usuarios/{id}")
-	public Map<String, Boolean> update(@PathVariable(value = "id") String userId,
-			@Valid @RequestBody UserDto userDto) throws ResourceNotFoundException {
+	public Map<String, Boolean> update(@PathVariable(value = "id") String userId, @Valid @RequestBody UserDto userDto)
+			throws ResourceNotFoundException {
 		User user = userRepository.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado!"));
-
+		
 		user.setNome(userDto.getNome());
 		user.setCpf(userDto.getCpf());
 		user.setIdade(Integer.parseInt(userDto.getIdade()));
+		userRepository.save(user);
 		Map<String, Boolean> response = new HashMap<String, Boolean>();
 		response.put("updated", Boolean.TRUE);
 		return response;
 	}
-	
+
 	@DeleteMapping("/usuarios/{id}")
-	public Map<String, Boolean> delete(@PathVariable(value = "id") String userId)
-			throws ResourceNotFoundException {
+	public Map<String, Boolean> delete(@PathVariable(value = "id") String userId) throws ResourceNotFoundException {
 		User user = userRepository.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado!"));
 
